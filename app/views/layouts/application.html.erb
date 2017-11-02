@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Bungee+Shade" %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <title>GameTracker</title>		
+  </head>
+	<body class="<%= controller_name %> <%= action_name %>">
+		<%= render 'shared/sidebar' %>
+		<main>
+			<%= yield %>
+		</main>
+  </body>
+</html>

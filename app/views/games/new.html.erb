@@ -1,0 +1,13 @@
+<%= render 'shared/form_error', obj: @game %>
+
+<%= form_for @game do |f| %>
+	<%= render 'shared/form_error', obj: @game %>
+	<div>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	<div>
+		<%= f.label :img_url %>
+		<%= f.text_field :img_url %>
+	</div>
+	<%= f.submit "Submit" %>
+<% end %>

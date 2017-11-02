@@ -1,0 +1,33 @@
+	<aside id="sidebar">
+		<div id="sidebar_logo">
+			<h2>Track</h2>
+			<h2>My</h2>
+			<h2>Games</h2>
+		</div>
+		<nav id="sidebar_nav">
+			<ul>
+				<% if logged_in? %>
+					<li><%= link_to "Log Out", logout_path %></li>						
+				<% else %>
+					<li><%= link_to "Log In", login_path %></li>						
+				<% end %>
+
+				<% if !logged_in? %>	
+					<li><%= link_to "Register", register_path %></li>
+					<li><a style="color:white;">Add Play</a></li>
+					<li><a style="color:white;">Add Game</a></li>
+						<% else %>
+					<li><a style="color:white;">Register</a></li>								
+					<li><%= link_to "Add Play Session", new_play_path %></li>
+					<li><%= link_to "Add Game", new_game_path%></li>						
+				<% end %>
+
+			</ul>			
+			<div id="sidebar_search">
+				<textarea></textarea>
+			</div>
+		</nav>
+		<div id="sidebar_leaders">
+			<h4>Hall of Fame</h4>
+		</div>
+	</aside>

@@ -1,0 +1,54 @@
+@import "../base/globals";
+
+main {
+	display: flex;
+	flex-direction: column;
+	background-color: #FFFFFF; 
+	width: 100%;
+}
+
+.landing_main_wrapper,
+.landing_other_wrapper {
+	background-color: $neutral;
+	margin: 5px 10px 5px 5px;
+	height: 100%;
+}
+
+.landing_main_wrapper {
+	margin-top: 30px;
+}
+
+#last_sessions_wrapper {
+	display: flex;
+
+}
+
+.landing_other_wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+.landing_other_wrapper section {
+	height: 100%
+}
+
+#messages_area,
+#article_area,
+#suggestion_area {
+	height: 100%;
+}
+
+#last_sessions > h4,
+#messages_area > h4,
+#article_area > h4,
+#suggestion_area > h4 {
+	font-family: $title-font;
+	display: block;
+	background-color: $sky;
+	padding: 6px;
+}
+
+.content {
+	height: 100%;
+}
+

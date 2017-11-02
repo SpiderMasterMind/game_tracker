@@ -1,0 +1,46 @@
+<%= stylesheet_link_tag 'styles/landing' %>
+<p id="notice"><%= notice %></p>
+
+<div class="landing_main_wrapper">
+
+	<section id="last_sessions">
+		<h4>Last 3 Sessions</h4>
+		<div id="last_sessions_wrapper">
+			<% @plays.each do |play| %>
+				<section class="session_display">
+					<a href="#"><img src="http://via.placeholder.com/130x100/b00b00/ffffff" alt="game_img" /></a>
+					<a href="#"><h4><%= play.game.title %></h4></a>
+					<p>Played on </p>
+					<div class="session_players">
+						<ul>
+							<!-- !something.each ordered by winner, first one emboldened -->
+							<li>Murphy<a href="#">&raquo;</a></li>
+							<li class="highlight_winner">BentoBox<a href="#">&raquo;</a></li>
+							<li>TC<a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+					<!-- Jump to game session page -->
+					<a href="#"><span>Go to game session..</span></a>
+				</section>
+			<% end %>
+
+		</div>
+	</section>
+
+
+
+</div>
+
+<div class="landing_other_wrapper">
+	<section id="suggestion_area">
+		<h4>Why not play..?</h4>
+	</section>
+	<section id="article_area">
+		<h4>Articles</h4>
+	</section>
+	<section id="messages_area">
+		<h4>Messages</h4>
+	</section>
+
+</div>
+

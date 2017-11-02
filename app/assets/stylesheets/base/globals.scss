@@ -1,0 +1,36 @@
+$font-stack:    Helvetica, sans-serif;
+$title-font: 'Bungee Shade', cursive;
+$purple: #A64AC9;
+$yellow: #FCCD04;
+$peach: #FFB48F;
+$eggshell: #F5E6CC;
+$aqua: #17E9E0;
+$border: #C7D2E2;
+
+$sky: #CAEBF2;
+$carbon: #A9A9A9;
+$watermelon: #ff3b3f;
+$neutral: #EFEFEF;
+$font-color: #1A0315;
+
+html {
+	height: 100%;
+}
+
+body {
+  font: 100% $font-stack;
+	height: 100%;
+	color: $font-color;
+	display: flex;
+}
+
+a {
+	text-decoration: none;
+	color: $font-color;
+}
+
+a:hover {
+	background-color: #FFFFFF;
+}
+
+
