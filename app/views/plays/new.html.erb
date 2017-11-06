@@ -1,23 +1,26 @@
 <%= render 'shared/form_error', obj: @play %>
 
 <%= form_for @play do |f| %>
-	<div>
-		<%= f.label :usernames, "Select Players:" %>
-		<br \>
-		<ul>
-			<%= f.collection_check_boxes :user_ids, User.all, :id, :username do |cb| %>
-				<% content_tag(:li, cb.label(class: "checkbox-label") { cb.check_box + cb.text }) %>
-			<% end %>
-		</ul>
-	</div>
-	<div>
-		<%= f.label :usernames, "Select Game:" %>
-		<br \>
-		<ul>
-			<%= f.collection_radio_buttons :game_id, Game.all, :id, :title do |rb| %>
-				<% content_tag(:li, rb.label(class: "radio_label") { rb.radio_button + rb.text}) %>
-			<% end %>
-		</ul>
-	</div>
-	<%= f.submit class: "btn btn-success", remote: true, data: { "disable-with": "Saving..." }  %>
+			<button id="player_select_button" type="button" class="dropdown btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<%= f.label :usernames, "Select Players" %>
+  		</button>
+			<div class="dropdown-menu">
+				<ul>
+					<%= f.collection_check_boxes :user_ids, User.all, :id, :username do |cb| %>
+						<% content_tag(:li, cb.label(class: "checkbox-label") { cb.check_box + cb.text }) %>
+					<% end %>
+				</ul>
+			</div>
+			<button id="game_select_button" type="button" class="dropdown btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	
+				<%= f.label :usernames, "Select Game:" %>
+			</button>
+			<div class="dropdown-menu">
+				<ul>
+					<%= f.collection_radio_buttons :game_id, Game.all, :id, :title do |rb| %>
+						<% content_tag(:li, rb.label(class: "radio_label") { rb.radio_button + rb.text}) %>
+					<% end %>
+				</ul>
+			</div>
+			
+	<%= f.submit class: "btn btn-success", remote: true, data: { "disable-with": "Saving..." }  %>	
 <% end %>
