@@ -13,27 +13,6 @@ $watermelon: #ff3b3f;
 $neutral: #EFEFEF;
 $font-color: #1A0315;
 
-#palette ul {
-	width: 100%;
-
-}
-
-#palette ul:nth-child(1) {
-	background-color: $border;
-}
-
-#palette ul:nth-child(2) {
-	background-color: $carbon;
-}
-
-#palette ul:nth-child(3) {
-	background-color: $sky;
-}
-
-#palette ul:nth-child(4) {
-	background-color: $neutral;
-}
-
 #palette li {
 	display: block;
 	height: 35px;
@@ -61,9 +40,28 @@ a:hover {
 	background-color: #FFFFFF;
 }
 
-button .dropdown {
-
-
+/* DROP DOWN MENU STYLING */
+.dropdown_item:hover {
+	background-color: $carbon;
 }
 
+.dropdown_item label {
+	margin-bottom: 0;
+}
 
+input[type="checkbox"]:checked {
+	background-color: $carbon;
+}
+
+.dropdown-menu.show {
+	border-radius: 0;
+	width: 146px;
+}
+
+.checkbox-label {
+	width: 100%;
+}
+
+.plays.new .messages {
+	margin-top: 200px;
+}

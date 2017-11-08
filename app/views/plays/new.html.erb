@@ -1,26 +1,39 @@
 <%= render 'shared/form_error', obj: @play %>
-
-<%= form_for @play do |f| %>
-			<button id="player_select_button" type="button" class="dropdown btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				<%= f.label :usernames, "Select Players" %>
-  		</button>
+<div class="btn-toolbar mt-4" role="toolbar">
+	<%= form_for @play do |f| %>		
+	<div class="btn-group mr-2" role="group" aria-label="First group", data-dropdown="players">
+			<%= link_to "#", class: "btn btn-small dropdown-toggle", "data-toggle" => "dropdown" do %>
+				Select Players<span class='caret'></span>
+			<% end %>
 			<div class="dropdown-menu">
 				<ul>
 					<%= f.collection_check_boxes :user_ids, User.all, :id, :username do |cb| %>
-						<% content_tag(:li, cb.label(class: "checkbox-label") { cb.check_box + cb.text }) %>
+						<%= content_tag :li, class: "dropdown_item"  do %>
+							<% cb.label(class: "checkbox-label") { cb.check_box + cb.text } %>
+						<% end %>
 					<% end %>
 				</ul>
 			</div>
-			<button id="game_select_button" type="button" class="dropdown btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">	
-				<%= f.label :usernames, "Select Game:" %>
-			</button>
-			<div class="dropdown-menu">
-				<ul>
-					<%= f.collection_radio_buttons :game_id, Game.all, :id, :title do |rb| %>
-						<% content_tag(:li, rb.label(class: "radio_label") { rb.radio_button + rb.text}) %>
-					<% end %>
-				</ul>
-			</div>
-			
-	<%= f.submit class: "btn btn-success", remote: true, data: { "disable-with": "Saving..." }  %>	
-<% end %>
+	</div>
+	<div class="btn-group mr-2" role="group" aria-label="Second group", data-dropdown="game">	
+			<%= link_to '#', class: "btn btn-small dropdown-toggle", 'data-toggle' => 'dropdown' do %>
+				Select Game<span class='caret'></span>
+			<% end %>
+				<div class="dropdown-menu games">
+					<ul>
+						<%= f.collection_radio_buttons :game_id, Game.all, :id, :title do |rb| %>
+							<%= content_tag :li, class: "dropdown_item" do %>
+								<% rb.label(class: "radio_label") { rb.radio_button + rb.text} %>
+							<% end %>
+						<% end %>
+					</ul>
+				</div>
+		</div>
+	<div class="btn-group mr-2" role="group" aria-label="Third group">	
+			<%= f.submit class: "btn btn-success", remote: true, data: { "disable-with": "Saving..." }  %>	
+	</div>
+	<% end %>
+</div>
+<div class="messages">
+	Messages go here!
+</div>
