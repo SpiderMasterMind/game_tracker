@@ -1,10 +1,7 @@
-// can we separate the composing of the object function, and do a js script-page-specific render of the object instead?
-// refactor & redefine what the 'utility function' actually does, then separate, then think about how to render it
-//
-
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
 	var selectedObj = {};
 	var dropdownButtons = document.querySelectorAll("[data-dropdown]");
+	var messagesArea = document.querySelectorAll(".messages")[0];
 
 	// This overrides bootstrap's behaviour of closing the dropdown menu when and item is selected
 	document.querySelectorAll(".dropdown-menu").forEach(function(menu) {
@@ -12,28 +9,65 @@ $(document).ready(function() {
 			event.stopPropagation();
 		});
 	});
-	
+
 	document.querySelectorAll(".dropdown-menu").forEach(function(menu) {
 		menu.addEventListener("change", function(event) {
 			var selectedItems = getSelected(event);
 			var parentButtonIdentifier = getCustomIdentifier(event.target);
 			composeSelectedObj(selectedItems, parentButtonIdentifier);
-			console.log(selectedObj);		
-
-			var keys = Object.keys(selectedObj);
-			testText = []
-			keys.forEach(function(key) {
-				console.log(key + ": " + selectedObj[key]);
-				testText.push(key + ": " + selectedObj[key]);
-			})
-			$(".messages").text(testText)
-			
-
+			updateHighlighting();
+			renderOutput();
 		});
 	});
 
+	function updateHighlighting() {
+		document.querySelectorAll(":checked").forEach(function(checkedItem) {
+		checkedItem.parentElement.style.backgroundColor = "#A9A9A9"; 
+		});
+		var inputs = document.querySelectorAll("input[type=checkbox], input[type=radio]");
+		var unchecked = [].filter.call(inputs, function(el) {
+    	return !el.checked
+		});
+		unchecked.forEach(function(uncheckedItem) {
+			uncheckedItem.parentElement.style.backgroundColor = "white";
+		});
+	}
+
+	function renderOutput() {
+		var output = [];
+		if (Object.keys(selectedObj).length === 0) {
+			messagesArea.innerHTML = "";
+		} else {
+			var keys = Object.keys(selectedObj);
+			console.log(keys);
+			if (keys.indexOf("players") !== -1) { 
+				selectedObj["players"].forEach(function(playerId) {
+					output.push(getPlayerInfo(playerId));
+				})
+			}
+
+			if (keys.indexOf("game") !== -1) {
+				output.push(populateGameInfo(selectedObj["game"][0]));
+			}
+			messagesArea.innerHTML = formatOutput(output);
+		};
+	};
+
+	function formatOutput(output) {
+		return output.map(function(el, index, arr) {
+				return "<li>" + el + "</li>"
+		}).join("");
+	};
+
+	function getPlayerInfo(playerId) {
+		return document.querySelectorAll("label[for='play_user_ids_" + playerId + "']")[0].textContent;
+	};
+
+	function populateGameInfo(gameId) {
+		return document.querySelectorAll("label[for='play_game_id_" + gameId + "']")[0].textContent;
+	};
+
 	function composeSelectedObj(selectedItems, parentButton) {
-		// can we make it not global or will that mess up the overwriting?	
 		var arr = [];
 		selectedItems.forEach(function(item) {
 			arr.push(item.getAttribute("value"));
@@ -41,7 +75,6 @@ $(document).ready(function() {
 		selectedObj[parentButton] = arr || [];
 	}
 		
-
 	function getSelected(event) {
 		var parentButton = ensureParentIsCustomAttribute(event.target);
 			if (parentButton) {
@@ -53,7 +86,6 @@ $(document).ready(function() {
 				}
 			} else { return }
 	}
-
 
 	function returnSelected(items) {
 		items = Array.prototype.slice.call(items);
@@ -70,7 +102,6 @@ $(document).ready(function() {
 		}
 	}
 
-
 	function ensureParentIsCustomAttribute(input) {
 		var nodes = dropdownButtons; 
 		for (var i = 0; i <= nodes.length; i += 1) {
@@ -81,4 +112,4 @@ $(document).ready(function() {
 		return false;		
 	}
 
-});
+}, false);

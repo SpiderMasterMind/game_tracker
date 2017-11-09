@@ -41,9 +41,7 @@ a:hover {
 }
 
 /* DROP DOWN MENU STYLING */
-.dropdown_item:hover {
-	background-color: $carbon;
-}
+
 
 .dropdown_item label {
 	margin-bottom: 0;
@@ -53,13 +51,23 @@ input[type="checkbox"]:checked {
 	background-color: $carbon;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+	opacity: 0;
+}
+
 .dropdown-menu.show {
 	border-radius: 0;
 	width: 146px;
 }
 
-.checkbox-label {
+.checkbox-label,
+.radio_label {
 	width: 100%;
+}
+
+.checkbox-label:hover {
+	background-color: $carbon;
 }
 
 .plays.new .messages {

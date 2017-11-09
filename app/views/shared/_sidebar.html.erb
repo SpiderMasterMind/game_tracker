@@ -1,9 +1,11 @@
 	<aside id="sidebar">
-		<div id="sidebar_logo">
-			<h2>Track</h2>
-			<h2>My</h2>
-			<h2>Games</h2>
-		</div>
+		<%= link_to '/' do %>
+			<div id="sidebar_logo">
+				<h2>Track</h2>
+				<h2>My</h2>
+				<h2>Games</h2>
+			</div>				
+		<% end %>
 		<nav id="sidebar_nav">
 			<ul>
 				<% if logged_in? %>
@@ -22,10 +24,9 @@
 					<li><%= link_to "Add Game", new_game_path%></li>						
 				<% end %>
 
+				<li><%= link_to "View Play Sessions", plays_path %></li>
+
 			</ul>			
-			<div id="sidebar_search">
-				<textarea></textarea>
-			</div>
 		</nav>
 		<div id="sidebar_leaders">
 			<h4>Hall of Fame</h4>

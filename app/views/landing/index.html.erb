@@ -10,17 +10,17 @@
 				<section class="session_display">
 					<a href="#"><img src="http://via.placeholder.com/130x100/b00b00/ffffff" alt="game_img" /></a>
 					<a href="#"><h4><%= play.game.title %></h4></a>
-					<p>Played on </p>
+					<p>Played on <%= play.played_on ? play.played_on : play.created_at %></p>
 					<div class="session_players">
 						<ul>
-							<!-- !something.each ordered by winner, first one emboldened -->
-							<li>Murphy<a href="#">&raquo;</a></li>
-							<li class="highlight_winner">BentoBox<a href="#">&raquo;</a></li>
-							<li>TC<a href="#">&raquo;</a></li>
+							<% play.users.each do |user| %>
+								<li>
+									<%= user.username %>
+								</li>
+							<% end %>
 						</ul>
 					</div>
 					<!-- Jump to game session page -->
-					<a href="#"><span>Go to game session..</span></a>
 				</section>
 			<% end %>
 

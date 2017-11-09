@@ -5,6 +5,7 @@ class PlaysController < ApplicationController
 	end
 
 	def index
+		@plays = Play.all
 	end
 	 
 	def create

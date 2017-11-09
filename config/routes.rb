@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 	resources :users, only: [:show, :create, :edit, :update]
 	resources :games
-	resources :plays, only: [:new, :create]
+	resources :plays, only: [:new, :create, :index]
 
 
 end

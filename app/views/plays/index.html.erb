@@ -1,0 +1,4 @@
+<h3>Total games logged: <%= @plays.length %> </h3>
+<% @plays.each do |play| %>
+	<%= render 'play_info', play: play %>
+<% end %>
