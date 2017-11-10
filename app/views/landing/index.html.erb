@@ -2,45 +2,22 @@
 <p id="notice"><%= notice %></p>
 
 <div class="landing_main_wrapper">
-
 	<section id="last_sessions">
 		<h4>Last 3 Sessions</h4>
-		<div id="last_sessions_wrapper">
+		<div class="container" id="last_sessions_wrapper">
+			<!-- sort plays and limit to three -->
 			<% @plays.each do |play| %>
-				<section class="session_display">
-					<a href="#"><img src="http://via.placeholder.com/130x100/b00b00/ffffff" alt="game_img" /></a>
-					<a href="#"><h4><%= play.game.title %></h4></a>
-					<p>Played on <%= play.played_on ? play.played_on : play.created_at %></p>
-					<div class="session_players">
-						<ul>
-							<% play.users.each do |user| %>
-								<li>
-									<%= user.username %>
-								</li>
-							<% end %>
-						</ul>
-					</div>
+				<div class="row play_info">
+					<%= render 'plays/play_info', play: play %>
+				</div>
 					<!-- Jump to game session page -->
-				</section>
 			<% end %>
-
 		</div>
 	</section>
-
-
-
 </div>
 
-<div class="landing_other_wrapper">
-	<section id="suggestion_area">
-		<h4>Why not play..?</h4>
-	</section>
-	<section id="article_area">
-		<h4>Articles</h4>
-	</section>
-	<section id="messages_area">
-		<h4>Messages</h4>
-	</section>
+
+
 
 </div>
 

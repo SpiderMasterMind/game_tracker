@@ -11,7 +11,6 @@ main {
 .landing_other_wrapper {
 	background-color: $neutral;
 	margin: 5px 10px 5px 5px;
-	height: 100%;
 }
 
 .landing_main_wrapper {
@@ -19,17 +18,15 @@ main {
 }
 
 #last_sessions_wrapper {
-	display: flex;
 
 }
 
-.landing_other_wrapper {
-	display: flex;
-	flex-direction: row;
+#last_sessions {
 }
+
+
 
 .landing_other_wrapper section {
-	height: 100%
 }
 
 #messages_area,
@@ -51,4 +48,5 @@ main {
 .content {
 	height: 100%;
 }
+
 
