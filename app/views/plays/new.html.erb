@@ -8,7 +8,6 @@
 			<div class="dropdown-menu">
 				<ul>
 					<%= f.collection_check_boxes :user_ids, User.all, :id, :username do |cb| %>
-						<% binding.pry %>
 						<%= content_tag :li, class: "dropdown_item"  do %>
 							<% cb.label(class: "checkbox-label") { cb.check_box + cb.text } %>
 						<% end %>
